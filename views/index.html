@@ -1,0 +1,28 @@
+<html>
+<head><title>Game 22</title>
+
+<link href="/css/my.css" rel="stylesheet">
+
+
+</head>
+<body data-game-id="{{gameId}}">
+<div class="fill">
+    <div class="msgbox">
+        <p>Moves:{{moves}}.  Status:{{status}}</p>
+    </div>
+    <div class="board">
+        <table class="table-large">
+        {{#grid}}
+        <tr>
+        {{#.}}
+        <td class="cell {{category}}" onclick="handleClick({{row}}, {{column}})">{{size}} | {{used}}</td>
+        {{/.}}
+        </tr>
+        {{/grid}}
+        </table>
+    </div>
+</div>
+<script src="/client.js"></script>
+</body>
+</html>
+
