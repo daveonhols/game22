@@ -1,0 +1,45 @@
+.table-large {
+    height:100%;
+    width:100%;
+}
+
+
+.cell {
+    font-size: 8px;
+    border: 1px dashed grey;
+}
+
+.goal {
+    background: lightgreen;
+}
+
+.normal {
+    background: blue;
+}
+
+.empty {
+    background: green;
+}
+
+.large {
+    background: red;
+}
+
+.target {
+  background: yellow;
+}
+
+.msgbox {
+  flex: 0 0 30px;
+}
+
+.board {
+  flex 1;
+  height: 100%;
+}
+
+.fill {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
