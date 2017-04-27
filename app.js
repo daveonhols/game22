@@ -16,5 +16,5 @@ app.get("/", handlers.rootHandler);
 app.get("/game/:gameid-:arow-:acol-:brow-:bcol", handlers.gameMoveHandler);
 app.get("/game/:gameid", handlers.gameReloadHandler);
 
-app.listen(3000, () => console.log("Starting up..."));
+app.listen(3000, "0.0.0.0", () => console.log("Starting up..."));
 

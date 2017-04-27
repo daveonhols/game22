@@ -47,10 +47,19 @@ function processMove(grid, arow, acol, brow, bcol) {
     src.category = prevCategory;
   } else {
     newGrid.status = "Swapped, but goal is constant.";
+    if (dest.category === "goal_empty" && !src.category === "target") {
+      dest.category = "goal_full";
+      src.category = "empty";
+    }
+    if (src.category === "goal_full") {
+      src.category = "goal_empty";
+      dest.category = "normal";
+    }
   }
 
   if (src.category === "target" && dest.category === "goal") {
     newGrid.status = "Congratulations, you won!";
+    dest.category = "win";
   }
 
   return grid;
