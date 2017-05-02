@@ -1,14 +1,15 @@
 <html>
 <head><title>Game 22</title>
 
+    <link href="/css/reset.css" rel="stylesheet">
     <link href="/css/my.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 </head>
-<body class="grid" data-game-id="{{gameId}}">
-<div class="fill grid">
+<body data-game-id="{{gameId}}">
+<div class="fill">
     <div class="msgbox">
         <h1>Game 22</h1>
         <p>Click your way to greatness</p>
@@ -16,11 +17,11 @@
     <div class="table-container">
         <table class="table-large">
         {{#grid}}
-        <tr class="nopad">
-        {{#.}}
-        <td class="nopad cell {{category}}" onclick="handleClick({{row}}, {{column}})"></td>
-        {{/.}}
-        </tr>
+            <tr>
+                {{#.}}
+                <td class="cell {{category}}" onclick="handleClick({{row}}, {{column}})"></td>
+                {{/.}}
+            </tr>
         {{/grid}}
         </table>
     </div>
