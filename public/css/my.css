@@ -1,45 +1,80 @@
-.table-large {
-    height:100%;
-    width:100%;
+
+body {
+  font-family: 'Roboto';
+  background: #283593;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: 300;
+  color: #fff;
+}
+
+p {
+  margin-left:16px;
+  font-weight: 400;
+  opacity: 0.8;
+  color: #fff;
 }
 
 
-.cell {
-    font-size: 8px;
-    border: 1px dashed grey;
-}
-
-.goal {
-    background: lightgreen;
-}
-
-.normal {
-    background: blue;
-}
-
-.empty {
-    background: green;
-}
-
-.large {
-    background: red;
-}
-
-.target {
-  background: yellow;
-}
-
-.msgbox {
-  flex: 0 0 30px;
-}
-
-.board {
-  flex 1;
-  height: 100%;
+p.footer {
+  margin-top: 4px;
+  margin-left:16px;
+  font-weight: 300;
 }
 
 .fill {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100%;
+  background: #283593;
 }
+
+.msgbox {
+  padding-left: 72px;
+  padding-bottom: 8px;
+  background: #5f5fc4;
+  flex-grow: 0;
+}
+
+.table-container {
+  flex-grow: 1;
+}
+
+.table-large {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background:#ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+td:hover {
+  background-color: #cbc26d;
+}
+
+table.table-large td {
+   cursor: pointer;
+   vertical-align: middle;
+}
+
+.material-icons.md-18 { 
+  font-size: 18px;
+  display: block;
+ }
+
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }

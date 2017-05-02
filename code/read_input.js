@@ -24,12 +24,13 @@ function getNodes() {
       if (node.size > 500) {
         node.category = "large";
       }
+
       if (node.used === 0) {
         node.category = "empty";
       }
 
       if (rows === 0 && column === 0) {
-        node.category = "goal";
+        node.category = "goal_full";
       }
 
       if (grid.length === 34 && column === 0) {

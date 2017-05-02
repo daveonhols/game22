@@ -4,6 +4,7 @@ const reader = require("./read_input.js");
 const game = require("./game.js");
 
 function rootHandler(req, res) {
+  console.log("incoming...");
   const id = crypto.randomBytes(5).toString("hex");
   res.render(
     "index.html",
