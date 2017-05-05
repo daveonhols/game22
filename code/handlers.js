@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+const path = require("path");
 
 const reader = require("./read_input.js");
 const game = require("./game.js");
@@ -8,7 +9,7 @@ function rootHandler(req, res) {
   const id = crypto.randomBytes(5).toString("hex");
   res.render(
     "index.html",
-    { grid: reader.getNodes(), gameId: id, status: "Click to start playing", moves: 0 });
+    { approot: "", grid: reader.getNodes(), gameId: id, status: "Click to start playing", moves: 0 });
 }
 
 function gameMoveHandler(req, res) {
@@ -18,6 +19,7 @@ function gameMoveHandler(req, res) {
 
 function gameReloadHandler(req, res) {
   const reloaded = game.readGrid(req.params.gameid);
+  reloaded.approot = path.join("..", "/");
   res.render("index.html", reloaded);
 }
 

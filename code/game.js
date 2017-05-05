@@ -1,10 +1,11 @@
 const fs = require("fs");
+const path = require("path");
 
 const reader = require("./read_input.js");
 
-function getWriteDataPromise(path, data) {
+function getWriteDataPromise(location, data) {
   return new Promise((resolve, reject) => {
-    const writeStream = fs.createWriteStream(path);
+    const writeStream = fs.createWriteStream(location);
     writeStream.on("finish", () => {
       resolve(data);
     });
@@ -65,8 +66,8 @@ function processMove(grid, arow, acol, brow, bcol) {
   return grid;
 }
 
-function getInitFilePromise(gameId, path) {
-  return getWriteDataPromise(path, { grid: reader.getNodes(), gameId, status: "First Write", moves: 0 });
+function getInitFilePromise(gameId, location) {
+  return getWriteDataPromise(location, { grid: reader.getNodes(), gameId, status: "First Write", moves: 0 });
 }
 
 function getDoNothingPromise() {
@@ -79,14 +80,17 @@ function readGrid(gameId) {
 }
 
 function getWriteGridPromise(grid) {
-  const path = `data/${grid.gameId}.state`;
-  return getWriteDataPromise(path, grid);
+  const location = `data/${grid.gameId}.state`;
+  return getWriteDataPromise(location, grid);
 }
 
 function handleMove(res, gameid, arow, acol, brow, bcol) {
-  const path = `data/${gameid}.state`;
+  const location = `data/${gameid}.state`;
 
-  const doFirst = fs.existsSync(path) ? getDoNothingPromise() : getInitFilePromise(gameid, path);
+  const doFirst =
+    fs.existsSync(location)
+    ? getDoNothingPromise()
+    : getInitFilePromise(gameid, location);
 
   doFirst
     .then(() => {
@@ -95,6 +99,7 @@ function handleMove(res, gameid, arow, acol, brow, bcol) {
     })
     .then(grid => getWriteGridPromise(grid))
     .then((grid) => {
+      grid.approot = path.join("..", "/");
       res.render("index.html", grid);
     })
     .catch((err) => {

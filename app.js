@@ -12,7 +12,8 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static("public"));
 
-app.get("/", handlers.rootHandler);
+app.get("/", (req, res) => res.redirect("/play/"));
+app.get("/play/", handlers.rootHandler);
 app.get("/game/:gameid-:arow-:acol-:brow-:bcol", handlers.gameMoveHandler);
 app.get("/game/:gameid", handlers.gameReloadHandler);
 
