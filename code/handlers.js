@@ -1,5 +1,4 @@
 const crypto = require("crypto");
-const path = require("path");
 
 const reader = require("./read_input.js");
 const game = require("./game.js");
@@ -19,7 +18,6 @@ function gameMoveHandler(req, res) {
 
 function gameReloadHandler(req, res) {
   const reloaded = game.readGrid(req.params.gameid);
-  reloaded.approot = path.join("..", "/");
   res.render("index.html", reloaded);
 }
 

@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 const reader = require("./read_input.js");
 
@@ -99,7 +98,6 @@ function handleMove(res, gameid, arow, acol, brow, bcol) {
     })
     .then(grid => getWriteGridPromise(grid))
     .then((grid) => {
-      grid.approot = path.join("..", "/");
       res.render("index.html", grid);
     })
     .catch((err) => {
